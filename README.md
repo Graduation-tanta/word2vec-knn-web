@@ -24,6 +24,7 @@ Nearest to blood: ['cells', 'disease', 'brain', 'patients', 'treatment', 'drug',
 Nearest to stream: ['creek', 'watershed', 'mouth', 'flows', 'river', 'reaches', 'tributary', 'township']
 
 Nearest to hitler: ['nazi', 'jews', 'wilhelm', 'german', 'von', 'prisoners', 'germany', 'allied']
+
 Nearest to april: ['february', 'december', 'september', 'october', 'november', 'august', 'june', 'may']
 
 Nearest to traffic: ['junction', 'roads', 'temporary', 'si', 'regulations', 'trunk', 'prohibition', 'amendment']
