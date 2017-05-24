@@ -4,6 +4,7 @@ It has some good results for finding the K nearest words to a given word.
 aslo associated with python web server which will respond to queries and responds with an animated canvas that describes the words similarities.
 
 Some examples of k nearest words:
+----------------------------------------------------------------------------------------
 
 Nearest to machine: ['gun', 'light', 'artillery', 'battery', 'rifle', 'tank', 'engineers', 'heavy']
 
