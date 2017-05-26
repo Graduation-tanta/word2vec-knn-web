@@ -28,7 +28,7 @@ def read_data(filename):
 words = read_data('../text8')
 # words = words[0:500000]
 print('Data size %d' % len(words))
-
+print(words[0:15])
 vocabulary_size = 50000
 
 
@@ -163,10 +163,10 @@ with graph.as_default(), tf.device('/cpu:0'):
         normalized_embeddings, valid_dataset)
     # valid_size * features
 
-    similarity = tf.matmul(valid_embeddings, tf.transpose(normalized_embeddings))
+    similarity = tf.matmul(valid_embeddings, tf.transpose(normalized_embeddings)) # valid_size * features  MATMUL  features* classes
     print('similarity ', similarity.get_shape().as_list())  # valid_size * classes
 
-num_steps = 253809
+num_steps = 1
 # at least 17005208/67= 253809
 
 with tf.Session(graph=graph) as session:
@@ -203,9 +203,9 @@ num_points = 400
 
 import pickle
 
-with open('../pickleFiles/text8.pic', 'wb') as f:
-    pickle.dump({'reverse_dictionary': reverse_dictionary, 'dictionary': dictionary, 'count': count, 'final_embeddings': final_embeddings}
-                , f)
+# with open('../pickleFiles/text8.pic', 'wb') as f:
+#     pickle.dump({'reverse_dictionary': reverse_dictionary, 'dictionary': dictionary, 'count': count, 'final_embeddings': final_embeddings}
+#                 , f)
 
 tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000)
 two_d_embeddings = tsne.fit_transform(final_embeddings[1:num_points + 1, :])

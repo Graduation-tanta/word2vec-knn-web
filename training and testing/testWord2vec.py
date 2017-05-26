@@ -61,7 +61,7 @@ def k_NN(word):
 ####################################################
 
 
-# # my words #
+
 # # test 2
 ####################################################
 # words = ['man', 'woman', 'men', 'women', 'uncle', 'aunt', 'uncles', 'aunts']
@@ -72,13 +72,13 @@ def k_NN(word):
 # Tsne_Embeddings = final_embeddings[wordsInd, :]
 ####################################################
 
-
+# # my words #
 # # test 3
 ####################################################
 testwords = ['machine', 'dynamic', 'surrounding',
              'four', 'cat', 'egg', 'abdallah', 'batman', 'blood', 'stream', 'intelligence', 'top', 'hitler', 'april', 'traffic',
              'khalil', 'king', 'cancer', 'league', 'book', 'nvidia', 'obama', 'story', 'mind', 'marvel', 'quiz',
-             'sector', 'universe', 'kill', 'uncle', 'man', 'fantastic', 'usually', 'sunday', 'five', 'god', 'technology']
+             'sector', 'universe', 'kill', 'uncle', 'man', 'fantastic', 'usually', 'sunday', 'five', 'god', 'technology', 'soviet']
 
 words = []  # to print
 wordsInd = []  # for T-sne
@@ -88,27 +88,40 @@ for index, word in enumerate(testwords):
     nearest = k_NN(word)
     print('Nearest to %s:' % word, nearest)
 
-    if nearest:
-        words.append(word)
-        words.extend(nearest)
-        wordsInd.clear()
-        wordsInd.append(dictionary[word])
-        for nearWord in nearest:
-            wordsInd.append(dictionary[nearWord])
-
-    # print(Tsne_Embeddings.shape)
-    # print(final_embeddings.shape)
-    #
-    # print(wordsInd[0: top_k + 1])
-    # print(index)
-    # print(Tsne_Embeddings[index * top_k: index * top_k + top_k + 1, :].shape)
-    # print(final_embeddings[wordsInd[0: top_k + 1], :].shape)
-
-    Tsne_Embeddings[index: index + top_k + 1, :] = final_embeddings[wordsInd[0: top_k + 1], :] * shift
-
-    shift *= 2
+# if nearest:
+#         words.append(word)
+#         words.extend(nearest)
+#         wordsInd.clear()
+#         wordsInd.append(dictionary[word])
+#         for nearWord in nearest:
+#             wordsInd.append(dictionary[nearWord])
+#
+#     # print(Tsne_Embeddings.shape)
+#     # print(final_embeddings.shape)
+#     #
+#     # print(wordsInd[0: top_k + 1])
+#     # print(index)
+#     # print(Tsne_Embeddings[index * top_k: index * top_k + top_k + 1, :].shape)
+#     # print(final_embeddings[wordsInd[0: top_k + 1], :].shape)
+#
+#     Tsne_Embeddings[index: index + top_k + 1, :] = final_embeddings[wordsInd[0: top_k + 1], :] * shift
+#
+#     shift *= 2
 
 ####################################################
+with open('../pickleFiles/text8.pic', 'rb') as f:
+    myset = pickle.load(f)
+
+reverse_dictionary = myset['reverse_dictionary']
+dictionary = myset['dictionary']
+count = myset['count']
+final_embeddings = myset['final_embeddings']
+del myset
+
+num_points = 300
+wordsInd = np.arange(1, num_points + 1)
+words = [reverse_dictionary[ele] for ele in wordsInd]
+Tsne_Embeddings = final_embeddings[wordsInd, :]
 
 tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000)
 two_d_embeddings = tsne.fit_transform(Tsne_Embeddings)
@@ -129,4 +142,5 @@ def plot(embeddings, labels):
         pylab.annotate(label, xy=(x, y), xytext=(5, 2), textcoords='offset points', ha='right', va='bottom')
     pylab.show()
 
-# plot(two_d_embeddings, words)
+
+plot(two_d_embeddings, words)
