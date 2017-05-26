@@ -3,6 +3,11 @@ Implementation of word2vec as in Tensorflow examples on a piece of wikipedia dat
 It has some good results for finding the K nearest words to a given word. 
 aslo associated with python web server which will respond to queries and responds with an animated canvas that describes the words similarities.
 
+I used these tutorials:
+http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/
+http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/
+https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb
+----------------------------------------------------------------------------------------
 Some examples of k nearest words:
 ----------------------------------------------------------------------------------------
 
