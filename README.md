@@ -9,9 +9,9 @@ http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/
 
 http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/
 
-https://gi http://distill.pub/2016/misread-tsne/ thub.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb 
+https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/5_word2vec.ipynb 
 
-
+http://distill.pub/2016/misread-tsne/
 ----------------------------------------------------------------------------------------
 Some examples of k nearest words:
 ----------------------------------------------------------------------------------------
